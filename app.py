@@ -157,7 +157,7 @@ def register():
     return render_template('register.html', error_message=error_message)
 
 # Route for logging out
-@app.route('/logout')
+@app.route('/logout', methods=['POST'])
 @login_required
 def logout():
     logout_user()
