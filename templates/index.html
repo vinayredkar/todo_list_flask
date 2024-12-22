@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>TaskFlow</title>
+{% endblock %}
+
+{% block body %}
+<div class="title-bar">
+    <h1>TaskFlow</h1>
+    <form action="/" method="POST" class="logout-link" style="display: inline;">
+        <button type="submit">Logout</button>
+    </form>
+</div>
+
+<div class="content">
+    {% if tasks|length <1 %}
+        <h4>No tasks have been added yet.</h4>
+    {% else %}
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Date Added</th>
+                <th>Actions</th>
+            </tr>
+            {% for task in tasks %} 
+                <tr>
+                    <td>{{task.content}}</td>
+                    <td>{{task.date_created.date()}}</td>
+                    <td>
+                        <form action="/delete/{{task.id}}" method="POST" style="display: inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                        <form action="/update/{{task.id}}" method="GET" style="display: inline;">
+                            <button type="submit">Update</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    <div class="form">
+        <form action="/index" method="POST">
+            <input type="text" name="content" id="content" placeholder="Add a new task">
+            <input type="submit" value="Add Task">
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css')}}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    {% block body %}{% endblock %}
+
+    <!-- Error Message Div -->
+    {% if error_message %}
+        <div class="error-message" id="error-message">{{ error_message }}</div>
+    {% endif %}
+
+    <!-- Bottom Bar -->
+    <div class="bottom-bar">
+        <p>Developed by: Vinay Redkar</p>
+    </div>
+    
+</body>
+</html>

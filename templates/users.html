@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>User Information</title>
+{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h2>User Information</h2>
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+            </tr>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.password }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
